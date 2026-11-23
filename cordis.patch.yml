@@ -7,9 +7,6 @@
       config:
         hostIndex: false
         appBase: /app
-        # Added for Workflow Automation (the generator does not carry blend.yaml's door config yet): the automation tools for terminal agents.
-        tools:
-          expose: [automation_list_workflows, automation_get_workflow, automation_create_workflow, automation_rename_workflow, automation_search_nodes, automation_get_node_definition, automation_get_dynamic_fields, automation_set_trigger, automation_add_step, automation_update_step, automation_remove_step, automation_validate_workflow, automation_test_workflow, automation_publish_workflow, automation_activate_workflow, automation_deactivate_workflow, automation_list_runs, automation_get_run, automation_explain_run_failure, automation_cancel_run, automation_list_connections]
     - id: app-plugins
       name: ./frame/app-plugins.mjs
       isolate: {"extensions":true,"home":true}

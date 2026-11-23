@@ -149,8 +149,9 @@ copies another library plugin (for example `@acryldev/state`) into `plugins/`.
 
 ## Workflow Automation
 
-- Build and change workflows with the `automation_*` tools (`.acryl/bin/acryl tool list`), not by editing
-  `automation.json`: the tools validate, keep revisions, and the screen follows them live.
+- The ACRYL chat builds and changes workflows with the `automation_*` tools, not by editing `automation.json`: the tools
+  validate, keep revisions, and the screen follows them live. A terminal agent drives the screen with
+  `.acryl/bin/acryl look` and `act` (the door does not run the chat's tools outside a chat turn).
 - Publishing, activating, and tests that reach outside the app answer `awaiting_approval`: tell the person what it does
   and wait for their Approve in the app; then call again with the `approvalId`.
 - Never ask for a secret in the chat: the person adds connections on the Connections page.

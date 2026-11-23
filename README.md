@@ -3,7 +3,9 @@
 Workflow automation in the n8n class, as an ACRYL Blend: build workflows on a canvas, run them on a schedule, a webhook
 or by hand, look at every run step by step, and let the ACRYL agent build, test and fix them for you while you watch.
 
-![Workflow Automation](docs/screenshot.png)
+![The ACRYL chat building a workflow](docs/screenshot.png)
+
+![The editor](docs/editor.png)
 
 - **Editor**: a canvas (React Flow, Qadam Flow's layout) with routers (branches by conditions) and loops; a form per step
   generated from its integration, with `{{ }}` references to what earlier steps gave.
@@ -13,9 +15,10 @@ or by hand, look at every run step by step, and let the ACRYL agent build, test 
   survive a restart.
 - **Draft and published**: you edit a draft, publish a version, activate it. Export and import as a file (no secrets).
 - **Connections**: API keys and tokens, encrypted in the app's data folder, never shown again, never sent to the agent.
-- **The agent**: 21 typed tools (`automation_*`) for the chat and for Claude Code, Codex and Pi through
-  `.acryl/bin/acryl tool call`. Publishing, activating, and a test that reaches outside the app wait for you to press
-  Approve in the app.
+- **The agent**: 21 typed tools (`automation_*`) for the ACRYL chat on the right: it finds actions, builds the graph,
+  fills settings, tests and reads runs while you watch the canvas. Publishing, activating, and a test that reaches
+  outside the app wait for you to press Approve in the app. Terminal agents (Claude Code, Codex, Pi) drive the screen
+  through `.acryl/bin/acryl look` and `act`.
 
 ```sh
 npm install

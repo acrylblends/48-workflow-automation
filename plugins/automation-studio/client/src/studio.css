@@ -64,6 +64,7 @@ textarea.wa-input { font-family: var(--wa-mono); font-size: 12.5px; resize: vert
 .wa-form { display: flex; flex-direction: column; gap: 12px; }
 .wa-subfields { display: flex; flex-direction: column; gap: 10px; padding: 10px; border-left: 2px solid var(--wa-line); }
 .wa-checks, .wa-toggles { display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+label.wa-toggles, .wa-toggles > label, .wa-checks > label { display: flex; flex-direction: row; align-items: center; gap: 8px; }
 .wa-box { display: flex; flex-direction: column; gap: 8px; padding: 12px; border: 1px solid var(--wa-line); border-radius: 10px; background: var(--wa-fill); }
 .wa-box summary { cursor: pointer; font-weight: 600; }
 .wa-code { padding: 6px 8px; border-radius: 6px; background: var(--wa-surface); overflow-wrap: anywhere; }
@@ -153,12 +154,18 @@ textarea.wa-input { font-family: var(--wa-mono); font-size: 12.5px; resize: vert
 .react-flow__controls button { background: var(--wa-surface); color: var(--wa-text); border-bottom-color: var(--wa-line); }
 .react-flow__minimap { border: 1px solid var(--wa-line); border-radius: 8px; background: var(--wa-surface); overflow: hidden; }
 
+/* The frame's canvas is often 800-1200 px wide: below 1200 the inspector goes under the canvas instead of squeezing it. */
+@media (max-width: 1200px) {
+  .wa-editor { height: auto; min-height: 100%; }
+  .wa-workspace { grid-template-columns: minmax(0, 1fr); grid-template-rows: 60vh auto; }
+  .wa-side { border-left: 0; border-top: 1px solid var(--wa-line); }
+  .wa-canvas .react-flow__minimap { display: none; }
+}
 @media (max-width: 900px) {
-  .wa-app { grid-template-columns: minmax(0, 1fr); }
+  .wa-app { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); }
+  .wa-sidebar { padding: 8px 10px; gap: 4px; }
   .wa-sidebar { flex-direction: row; flex-wrap: wrap; border-right: 0; border-bottom: 1px solid var(--wa-line); }
   .wa-sidebar-foot, .wa-brand { display: none; }
-  .wa-workspace { grid-template-columns: minmax(0, 1fr); grid-template-rows: 55vh auto; }
-  .wa-side { border-left: 0; border-top: 1px solid var(--wa-line); }
   .wa-page { padding: 20px 16px; }
 }
 

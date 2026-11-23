@@ -195,7 +195,7 @@ function Canvas({ workflow }: { workflow: WorkflowView }) {
     <ReactFlow nodes={graph.nodes as never} edges={graph.edges as never} nodeTypes={nodeTypes as never} edgeTypes={edgeTypes as never} nodesDraggable={false} nodesConnectable={false} elementsSelectable={false} fitView minZoom={0.2} maxZoom={1.5} proOptions={{ hideAttribution: true }}>
       <Background gap={20} size={1} />
       <Controls showInteractive={false} />
-      <MiniMap pannable zoomable ariaLabel="Overview of the workflow" bgColor="var(--wa-surface)" maskColor="var(--wa-accent-dim)" nodeColor="var(--wa-line-strong)" nodeBorderRadius={6} />
+      <MiniMap pannable zoomable ariaLabel="Overview of the workflow" bgColor="var(--wa-surface)" maskColor="rgba(127, 127, 127, 0.18)" nodeColor="var(--wa-line-strong)" nodeBorderRadius={6} />
     </ReactFlow>
   )
 }

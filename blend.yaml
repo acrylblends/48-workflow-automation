@@ -50,7 +50,3 @@ spec:
     # The door: an agent working in this folder looks at the page and acts on it through .acryl/bin/acryl. Development only: src/app.ts leaves it out when NODE_ENV=production.
     - id: acryl-door
       name: acryl-door
-      config:
-        # The automation tools, for Claude Code, Codex, Pi and every terminal agent (`.acryl/bin/acryl tool list`).
-        tools:
-          expose: [automation_list_workflows, automation_get_workflow, automation_create_workflow, automation_rename_workflow, automation_search_nodes, automation_get_node_definition, automation_get_dynamic_fields, automation_set_trigger, automation_add_step, automation_update_step, automation_remove_step, automation_validate_workflow, automation_test_workflow, automation_publish_workflow, automation_activate_workflow, automation_deactivate_workflow, automation_list_runs, automation_get_run, automation_explain_run_failure, automation_cancel_run, automation_list_connections]
