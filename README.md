@@ -20,6 +20,23 @@ or by hand, look at every run step by step, and let the ACRYL agent build, test 
   outside the app wait for you to press Approve in the app. Terminal agents (Claude Code, Codex, Pi) drive the screen
   through `.acryl/bin/acryl look` and `act`.
 
+## Install
+
+Ready to install (the latest release, <https://github.com/acrylblends/48-workflow-automation/releases/latest>):
+
+| | Apple silicon / ARM | Intel / x64 |
+|---|---|---|
+| macOS | [ACRYL-Workflow-Automation-mac-arm64.dmg](https://github.com/acrylblends/48-workflow-automation/releases/latest/download/ACRYL-Workflow-Automation-mac-arm64.dmg) | [ACRYL-Workflow-Automation-mac-x64.dmg](https://github.com/acrylblends/48-workflow-automation/releases/latest/download/ACRYL-Workflow-Automation-mac-x64.dmg) |
+| Windows | [ACRYL-Workflow-Automation-win-arm64.exe](https://github.com/acrylblends/48-workflow-automation/releases/latest/download/ACRYL-Workflow-Automation-win-arm64.exe) | [ACRYL-Workflow-Automation-win-x64.exe](https://github.com/acrylblends/48-workflow-automation/releases/latest/download/ACRYL-Workflow-Automation-win-x64.exe) |
+| Linux (Debian, Ubuntu) | [ACRYL-Workflow-Automation-linux-arm64.deb](https://github.com/acrylblends/48-workflow-automation/releases/latest/download/ACRYL-Workflow-Automation-linux-arm64.deb) | [ACRYL-Workflow-Automation-linux-x64.deb](https://github.com/acrylblends/48-workflow-automation/releases/latest/download/ACRYL-Workflow-Automation-linux-x64.deb) |
+
+Not signed yet: on macOS right-click the app and choose Open; on Windows, if SmartScreen asks, click More info and then
+Run anyway. A smaller build on Electrobun (system webview, Bun): <https://github.com/acrylblends/48-workflow-automation-eb>.
+
+Or make your own copy to change: `npx acryl new my-automation github:acrylblends/48-workflow-automation`.
+
+## Develop
+
 ```sh
 npm install
 npm run dev            # the app in the ACRYL frame, with the agent on the right
