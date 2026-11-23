@@ -1,26 +1,34 @@
-# workflow-automation
+# ACRYL Workflow Automation
 
-A Cordis app on Node, scaffolded by `acrylblends init`. TypeScript, run by Node with no build step. Every part is a
-Cordis plugin.
+Workflow automation in the n8n class, as an ACRYL Blend: build workflows on a canvas, run them on a schedule, a webhook
+or by hand, look at every run step by step, and let the ACRYL agent build, test and fix them for you while you watch.
+
+![Workflow Automation](docs/screenshot.png)
+
+- **Editor**: a canvas (React Flow, Qadam Flow's layout) with routers (branches by conditions) and loops; a form per step
+  generated from its integration, with `{{ }}` references to what earlier steps gave.
+- **Triggers**: manual, schedule (every hour, day, week, cron), webhook (`/automation/webhooks/<token>`, `/test` runs the draft).
+- **Integrations**: HTTP, JSON, data mapper, date, math, delay, from Qadam Flow (MIT) as npm packages.
+- **Runs**: durable; every step's input, output, error, duration and attempts; retry and continue-on-failure; delays
+  survive a restart.
+- **Draft and published**: you edit a draft, publish a version, activate it. Export and import as a file (no secrets).
+- **Connections**: API keys and tokens, encrypted in the app's data folder, never shown again, never sent to the agent.
+- **The agent**: 21 typed tools (`automation_*`) for the chat and for Claude Code, Codex and Pi through
+  `.acryl/bin/acryl tool call`. Publishing, activating, and a test that reaches outside the app wait for you to press
+  Approve in the app.
 
 ```sh
 npm install
-npm run dev        # prints its URL; data lives in ~/.acryl/apps/<id>/data/
+npm run dev            # the app in the ACRYL frame, with the agent on the right
+npm start              # the app on its own server
 npm test
-npm run check      # type-check
+npm run check          # type-check (server and screen)
+npm run build:studio   # rebuild the screen after editing plugins/automation-studio/client/src
 ```
 
-- `src/main.ts` chooses where the app lives (the `@acryldev/instance` package) and starts it.
-- `blend.yaml` is the app as data: which plugins it mounts, in what order, with what config and parameters. Switch
-  one off with `disabled: true`. `npm run lock` writes `blend.lock.json`: the manifest's digest and a digest of
-  every plugin folder, so a diff of the lock shows what changed.
-- `src/app.ts` holds the registry of plugins the code provides, and mounts the manifest's rows.
-- `src/routes.ts` is your own plugin: it builds an `App` (`import { App } from './plugins/router/src/index.ts'`) and mounts it with `ctx.router.route(prefix, app)`. Routes added to the app after it is mounted are not served. A page mounted at `/x` answers `/x`, not `/x/` (trailing slashes are strict). The router API is documented at https://acrylblends.github.io/docs/framework/the-acryl-framework and in `docs/framework` of the acrylblends repository.
-- `plugins/` holds the plugins copied from the ACRYLBLENDS library. They are yours now; edit them freely.
-  Add more with `acrylblends add <plugin>`.
+Plugins (each a row in `blend.yaml`, each switchable): `automation` (the domain: workflows, runs, connections,
+schedules), `automation-api` (JSON API, live events, webhooks), `automation-studio` (the screen), `automation-tools`
+(the agent's tools).
 
-`npm run save -- "message"` commits the app with git (and pushes when it has a remote). It refuses a file that looks like
-it holds a secret, and refuses to push a private app (anything but `visibility: public` in `blend.yaml`) to a public
-remote.
-
-Set `ACRYLBLENDS_HOME` to keep data elsewhere, and `ACRYLBLENDS_PORT` to choose the first port tried.
+Built on [Qadam Flow](https://github.com/aiqadam/qadam-flow) (MIT), itself from Activepieces (MIT). See `NOTICE` and
+`docs/upstream-audit.md`. MIT licensed.

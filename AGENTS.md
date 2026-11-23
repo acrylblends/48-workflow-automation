@@ -146,3 +146,12 @@ The door is a command in this folder, `.acryl/bin/acryl`, that lets you look at 
 The first screen (`src/routes.ts`) shows the app's name and, below it, the widget of every plugin that registers one with `ctx.home.widget`
 (the `home` row). A new feature is a plugin of its own with its row in `blend.yaml`, never a change to `src/routes.ts`. `acrylblends add <plugin>`
 copies another library plugin (for example `@acryldev/state`) into `plugins/`.
+
+## Workflow Automation
+
+- Build and change workflows with the `automation_*` tools (`.acryl/bin/acryl tool list`), not by editing
+  `automation.json`: the tools validate, keep revisions, and the screen follows them live.
+- Publishing, activating, and tests that reach outside the app answer `awaiting_approval`: tell the person what it does
+  and wait for their Approve in the app; then call again with the `approvalId`.
+- Never ask for a secret in the chat: the person adds connections on the Connections page.
+- After editing `plugins/automation-studio/client/src`, run `npm run build:studio` (the bundle in `client/dist` is committed).

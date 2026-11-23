@@ -125,8 +125,10 @@ export async function composeInto(
     manifest,
     { ...registry, ...ownPlugins },
     {
-      // The routes row mounts the pages (and the client modules) at the prefix the frame host chose.
+      // The routes row mounts the pages (and the client modules) at the prefix the frame host chose; so do the automation screen and its API.
       routes: { ...(prefix === undefined ? {} : { prefix }) },
+      'automation-api': { ...(prefix === undefined ? {} : { prefix }) },
+      'automation-studio': { ...(prefix === undefined ? {} : { prefix }) },
       // The app's own plugins live in plugins/, next to the plugins copied from the library (plugins/library.json lists those, so they are not installed twice).
       // In production they start read-only from where they are deployed: the app keeps its features, and nothing can be installed while it runs.
       extensions: {
